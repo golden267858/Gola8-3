@@ -23,7 +23,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex; justify-content: center; align-items: center; 
             min-height: 100vh; overflow: hidden;
-            background-image: radial-gradient(circle at center 40%, #2a1b1b 0%, #000 80%); /* 暗红金色背景晕染 */
+            background-image: radial-gradient(circle at center 40%, #2a1b1b 0%, #000 80%); 
         }
 
         .wrapper {
@@ -36,16 +36,20 @@
             padding-top: 20px;
         }
 
-        /* 顶部 LOGO */
-        .logo-container { text-align: center; margin-bottom: 10px; animation: fadeIn 1s ease-in; }
-        .main-logo { height: 100px; object-fit: contain; filter: drop-shadow(0 0 15px rgba(251, 192, 45, 0.4)); }
+        /* 顶部 LOGO - 已极大幅度放大 */
+        .logo-container { text-align: center; margin-bottom: 5px; animation: fadeIn 1s ease-in; }
+        .main-logo { 
+            height: 160px; /* 从 100px 放大至 160px */
+            object-fit: contain; 
+            filter: drop-shadow(0 0 15px rgba(251, 192, 45, 0.4)); 
+        }
 
         /* 标题区 */
-        .header-text { text-align: center; padding: 0 20px; margin-bottom: 20px; }
+        .header-text { text-align: center; padding: 0 20px; margin-bottom: 25px; }
         .header-text h1 { font-size: 24px; color: var(--gold); margin-bottom: 8px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
         .header-text p { font-size: 15px; color: #ddd; background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); display: inline-block; padding: 6px 15px; border-radius: 20px; font-weight: bold; }
 
-        /* 盲盒游戏区 (核心) */
+        /* 盲盒游戏区 (使用发光礼物盒方案) */
         .game-area {
             flex-grow: 1;
             display: flex;
@@ -57,7 +61,7 @@
         .boxes-container {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 12px;
             width: 100%;
             padding: 0 20px;
         }
@@ -65,31 +69,30 @@
             width: 30%;
             max-width: 100px;
             aspect-ratio: 1;
-            background: linear-gradient(135deg, #e53935, #b71c1c);
-            border: 2px solid #ff5252;
-            border-radius: 12px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.2);
+            background: radial-gradient(circle, rgba(251,192,45,0.15) 0%, transparent 80%); /* 金色底座光晕 */
+            border: 1px solid rgba(251, 192, 45, 0.3); /* 若隐若现的金边 */
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 45px;
+            font-size: 55px; /* 礼物盒尺寸 */
             cursor: pointer;
             position: relative;
             animation: bounce 2s infinite;
-            transition: transform 0.2s;
+            transition: transform 0.2s, filter 0.3s;
         }
         .box:nth-child(2) { animation-delay: 0.2s; }
         .box:nth-child(3) { animation-delay: 0.4s; }
-        .box:hover { filter: brightness(1.2); }
-        .box::after { content: "?"; color: rgba(255,255,255,0.9); font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
+        .box:hover { filter: drop-shadow(0 0 15px var(--gold)); transform: scale(1.05); }
 
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         .shake-anim { animation: shake 0.5s !important; }
         @keyframes shake { 0% { transform: translateX(0); } 20% { transform: translateX(-10px) rotate(-10deg); } 40% { transform: translateX(10px) rotate(10deg); } 60% { transform: translateX(-10px) rotate(-10deg); } 80% { transform: translateX(10px) rotate(10deg); } 100% { transform: translateX(0); } }
 
         /* 隐藏的领奖区 (游戏结束后显示) */
         .result-area {
-            display: none; /* 初始隐藏 */
+            display: none; 
             flex-direction: column;
             align-items: center;
             width: 100%;
@@ -100,7 +103,7 @@
         .win-title { font-size: 26px; color: #fff; text-align: center; margin-bottom: 15px; line-height: 1.3;}
         .win-title span { color: var(--gold); font-size: 34px; font-weight: 900; display: block; text-shadow: 0 0 20px rgba(251, 192, 45, 0.8); }
 
-        /* 沿用 V2 的按钮和图标样式 */
+        /* 按钮区 */
         .action-area { padding: 0 20px 20px; width: 100%; }
         .btn-group { display: flex; gap: 15px; justify-content: center; }
         .btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; padding: 12px 5px; border-radius: 16px; color: white; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 8px 20px rgba(0,0,0,0.5); position: relative; overflow: hidden;}
@@ -113,11 +116,19 @@
         .btn span.sub { font-size: 11px; opacity: 0.85; margin-top: 3px; z-index: 2;}
         .btn::after { content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transform: skewX(-20deg); animation: shine 3s infinite; z-index: 1;}
 
-        /* 沿用 V2 的底部信任图标 */
+        /* 官方合作信任区 - 已高度聚拢 */
         .trust-section { width: 100%; margin-bottom: 10px; margin-top: auto;}
         .trust-divider { display: flex; align-items: center; text-align: center; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         .trust-divider::before, .trust-divider::after { content: ''; flex: 1; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0 15px; }
-        .trust-icons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; padding: 0 20px; justify-items: center; align-items: center; }
+        
+        .trust-icons-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 8px 15px; /* 间距极限缩小 */
+            padding: 0 50px; /* 增加左右内边距，强制图标向中心靠拢 */
+            justify-items: center; 
+            align-items: center; 
+        }
         .trust-icons-grid img { height: 60px; max-width: 150px; object-fit: contain; border-radius: 16px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)) grayscale(10%); }
         .kpay-fix { clip-path: inset(3px round 16px); }
 
@@ -138,27 +149,27 @@
         <!-- 游戏阶段：标题与盲盒 -->
         <div class="game-area" id="gameArea">
             <div class="header-text">
-                <h1>ရွှေဘောက်စ်ကို ရွေးချယ်ပါ!</h1> <!-- 选择一个盲盒！ -->
-                <p>အခမဲ့ဖွင့်ခွင့် (၁) ကြိမ် ရှိပါသည်</p> <!-- 你有 1 次免费开启机会 -->
+                <h1>ရွှေဘောက်စ်ကို ရွေးချယ်ပါ!</h1>
+                <p>အခမဲ့ဖွင့်ခွင့် (၁) ကြိမ် ရှိပါသည်</p>
             </div>
             
+            <!-- 使用 Emoji 礼物盒，加载0延迟 -->
             <div class="boxes-container">
-                <div class="box" onclick="openBox(this)"></div>
-                <div class="box" onclick="openBox(this)"></div>
-                <div class="box" onclick="openBox(this)"></div>
+                <div class="box" onclick="openBox(this)">🎁</div>
+                <div class="box" onclick="openBox(this)">🎁</div>
+                <div class="box" onclick="openBox(this)">🎁</div>
             </div>
         </div>
 
-        <!-- 结果阶段：领奖区 (初始隐藏) -->
+        <!-- 结果阶段：领奖区 -->
         <div class="result-area" id="resultArea">
             <div class="win-title">
-                ဂုဏ်ယူပါတယ်! သင်ရရှိသည်မှာ<br> <!-- 恭喜！你获得了 -->
+                ဂုဏ်ယူပါတယ်! သင်ရရှိသည်မှာ<br>
                 <span>100% NEW BONUS</span>
             </div>
             
             <div class="action-area">
                 <div class="btn-group">
-                    <!-- 直接调用 BeMob 的点击链接 -->
                     <a href="https://6tjzk.bemobtrcks.com/click/1" class="btn btn-tg">
                         <img src="telegram.webp" alt="Telegram" class="tg-fix">
                         <span class="main">Telegram ဖြင့်<br>ရယူမည်</span>
@@ -173,7 +184,7 @@
             </div>
         </div>
 
-        <!-- 官方合作展示区 (放在底部固定) -->
+        <!-- 官方合作展示区 (紧凑排列) -->
         <div class="trust-section">
             <div class="trust-divider">Official Partners</div>
             <div class="trust-icons-grid">
@@ -194,20 +205,16 @@
         let hasPlayed = false;
 
         function openBox(element) {
-            // 防止重复点击
             if (hasPlayed) return;
             hasPlayed = true;
 
-            // 1. 添加震动动画
             element.classList.add('shake-anim');
             
-            // 其他盲盒变暗
             let allBoxes = document.querySelectorAll('.box');
             allBoxes.forEach(b => {
                 if(b !== element) b.style.opacity = '0.3';
             });
 
-            // 2. 震动 0.6 秒后，隐藏游戏区，显示领奖区
             setTimeout(() => {
                 document.getElementById('gameArea').style.display = 'none';
                 let resultArea = document.getElementById('resultArea');
