@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lucky Draw - You Have 1 Free Spin!</title>
+    <title>Lucky Draw - You Have 2 Free Spins!</title>
     
     <link rel="dns-prefetch" href="https://6tjzk.bemobtrcks.com">
     <link rel="preconnect" href="https://6tjzk.bemobtrcks.com">
@@ -36,20 +36,20 @@
             padding-top: 20px;
         }
 
-        /* 顶部 LOGO - 已极大幅度放大 */
+        /* 顶部 LOGO */
         .logo-container { text-align: center; margin-bottom: 5px; animation: fadeIn 1s ease-in; }
-        .main-logo { 
-            height: 160px; /* 从 100px 放大至 160px */
-            object-fit: contain; 
-            filter: drop-shadow(0 0 15px rgba(251, 192, 45, 0.4)); 
-        }
+        .main-logo { height: 160px; object-fit: contain; filter: drop-shadow(0 0 15px rgba(251, 192, 45, 0.4)); }
 
         /* 标题区 */
-        .header-text { text-align: center; padding: 0 20px; margin-bottom: 25px; }
+        .header-text { text-align: center; padding: 0 20px; margin-bottom: 25px; min-height: 70px;}
         .header-text h1 { font-size: 24px; color: var(--gold); margin-bottom: 8px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
-        .header-text p { font-size: 15px; color: #ddd; background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); display: inline-block; padding: 6px 15px; border-radius: 20px; font-weight: bold; }
+        .header-text p { font-size: 14px; color: #ddd; background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); display: inline-block; padding: 6px 15px; border-radius: 20px; font-weight: bold; line-height: 1.4; transition: 0.3s;}
+        
+        /* 错误提示高亮状态 */
+        .error-msg { background: rgba(158, 158, 158, 0.2) !important; border-color: #777 !important; color: #fff !important;}
+        .error-msg span { color: #ff5252; font-weight: 900;}
 
-        /* 盲盒游戏区 (使用发光礼物盒方案) */
+        /* 盲盒游戏区 */
         .game-area {
             flex-grow: 1;
             display: flex;
@@ -69,28 +69,39 @@
             width: 30%;
             max-width: 100px;
             aspect-ratio: 1;
-            background: radial-gradient(circle, rgba(251,192,45,0.15) 0%, transparent 80%); /* 金色底座光晕 */
-            border: 1px solid rgba(251, 192, 45, 0.3); /* 若隐若现的金边 */
+            background: radial-gradient(circle, rgba(251,192,45,0.15) 0%, transparent 80%); 
+            border: 1px solid rgba(251, 192, 45, 0.3); 
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 55px; /* 礼物盒尺寸 */
+            font-size: 55px; 
             cursor: pointer;
             position: relative;
             animation: bounce 2s infinite;
-            transition: transform 0.2s, filter 0.3s;
+            transition: all 0.3s;
         }
         .box:nth-child(2) { animation-delay: 0.2s; }
         .box:nth-child(3) { animation-delay: 0.4s; }
-        .box:hover { filter: drop-shadow(0 0 15px var(--gold)); transform: scale(1.05); }
+        .box:hover:not(.opened) { filter: drop-shadow(0 0 15px var(--gold)); transform: scale(1.05); }
+
+        /* 首次点击变空的样式 */
+        .box.opened {
+            animation: none !important;
+            background: transparent !important;
+            border: 1px dashed #555 !important;
+            box-shadow: none !important;
+            filter: grayscale(100%) opacity(0.5);
+            cursor: not-allowed;
+            transform: scale(0.95);
+        }
 
         @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
         .shake-anim { animation: shake 0.5s !important; }
         @keyframes shake { 0% { transform: translateX(0); } 20% { transform: translateX(-10px) rotate(-10deg); } 40% { transform: translateX(10px) rotate(10deg); } 60% { transform: translateX(-10px) rotate(-10deg); } 80% { transform: translateX(10px) rotate(10deg); } 100% { transform: translateX(0); } }
 
-        /* 隐藏的领奖区 (游戏结束后显示) */
+        /* 隐藏的领奖区 */
         .result-area {
             display: none; 
             flex-direction: column;
@@ -116,19 +127,12 @@
         .btn span.sub { font-size: 11px; opacity: 0.85; margin-top: 3px; z-index: 2;}
         .btn::after { content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transform: skewX(-20deg); animation: shine 3s infinite; z-index: 1;}
 
-        /* 官方合作信任区 - 已高度聚拢 */
+        /* 官方合作信任区 */
         .trust-section { width: 100%; margin-bottom: 10px; margin-top: auto;}
         .trust-divider { display: flex; align-items: center; text-align: center; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
         .trust-divider::before, .trust-divider::after { content: ''; flex: 1; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0 15px; }
         
-        .trust-icons-grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 8px 15px; /* 间距极限缩小 */
-            padding: 0 50px; /* 增加左右内边距，强制图标向中心靠拢 */
-            justify-items: center; 
-            align-items: center; 
-        }
+        .trust-icons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 15px; padding: 0 50px; justify-items: center; align-items: center; }
         .trust-icons-grid img { height: 60px; max-width: 150px; object-fit: contain; border-radius: 16px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)) grayscale(10%); }
         .kpay-fix { clip-path: inset(3px round 16px); }
 
@@ -150,10 +154,10 @@
         <div class="game-area" id="gameArea">
             <div class="header-text">
                 <h1>ရွှေဘောက်စ်ကို ရွေးချယ်ပါ!</h1>
-                <p>အခမဲ့ဖွင့်ခွင့် (၁) ကြိမ် ရှိပါသည်</p>
+                <!-- 提示修改为：2次机会 -->
+                <p id="spin-text">အခမဲ့ဖွင့်ခွင့် (၂) ကြိမ် ရှိပါသည်</p>
             </div>
             
-            <!-- 使用 Emoji 礼物盒，加载0延迟 -->
             <div class="boxes-container">
                 <div class="box" onclick="openBox(this)">🎁</div>
                 <div class="box" onclick="openBox(this)">🎁</div>
@@ -184,7 +188,7 @@
             </div>
         </div>
 
-        <!-- 官方合作展示区 (紧凑排列) -->
+        <!-- 官方合作展示区 -->
         <div class="trust-section">
             <div class="trust-divider">Official Partners</div>
             <div class="trust-icons-grid">
@@ -200,26 +204,45 @@
         </div>
     </div>
 
-    <!-- 游戏逻辑脚本 -->
+    <!-- 游戏逻辑脚本 (新增心跳空枪逻辑) -->
     <script>
-        let hasPlayed = false;
+        let clickCount = 0;
 
         function openBox(element) {
-            if (hasPlayed) return;
-            hasPlayed = true;
+            // 如果这个盒子已经被点过了，或者游戏已经结束，不作反应
+            if (element.classList.contains('opened') || clickCount >= 2) return;
 
-            element.classList.add('shake-anim');
-            
-            let allBoxes = document.querySelectorAll('.box');
-            allBoxes.forEach(b => {
-                if(b !== element) b.style.opacity = '0.3';
-            });
+            if (clickCount === 0) {
+                // 【第一枪】 - 必定是空盒
+                element.classList.add('opened');
+                element.innerHTML = '❌'; // 变成叉叉
+                
+                // 更新顶部文字：哎呀，空的！再试一次 (剩1次)
+                let spinText = document.getElementById('spin-text');
+                spinText.classList.add('error-msg');
+                spinText.innerHTML = 'နှမြောစရာပါ! ဗလာဖြစ်နေပါတယ်။<br>နောက်တစ်ကြိမ် ထပ်ကြိုးစားကြည့်ပါ! <span>(၁ ကြိမ် ကျန်ပါသေးသည်)</span>';
+                
+                clickCount++;
+            } 
+            else if (clickCount === 1) {
+                // 【第二枪】 - 必定是大奖
+                element.classList.add('shake-anim');
+                
+                // 让其他盒子变暗
+                let allBoxes = document.querySelectorAll('.box');
+                allBoxes.forEach(b => {
+                    if(b !== element) b.style.opacity = '0.3';
+                });
 
-            setTimeout(() => {
-                document.getElementById('gameArea').style.display = 'none';
-                let resultArea = document.getElementById('resultArea');
-                resultArea.style.display = 'flex';
-            }, 600);
+                // 延迟0.6秒后显示大奖页面
+                setTimeout(() => {
+                    document.getElementById('gameArea').style.display = 'none';
+                    let resultArea = document.getElementById('resultArea');
+                    resultArea.style.display = 'flex';
+                }, 600);
+                
+                clickCount++;
+            }
         }
     </script>
 </body>
