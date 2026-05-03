@@ -3,178 +3,217 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Myanmar Gold 8 VIP - Club388® & Batman688® Agent</title>
+    <title>Lucky Draw - You Have 1 Free Spin!</title>
     
     <link rel="dns-prefetch" href="https://6tjzk.bemobtrcks.com">
     <link rel="preconnect" href="https://6tjzk.bemobtrcks.com">
 
     <style>
         :root { 
-            --gold: #d4af37; --gold-light: #f9edbe; --gold-bright: #fff9e6;
-            --gold-dark: #8a6d3b; --tg-blue: #24A1DE; --viber-purple: #7360f2;
+            --gold: #fbc02d; 
+            --red: #e53935;
+            --bg-dark: #0f0f13;
         }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body { 
-            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%); 
-            color: #fff; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff; 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex; justify-content: center; align-items: center; 
-            min-height: 100vh; margin: 0; overflow: hidden;
+            min-height: 100vh; overflow: hidden;
+            background-image: radial-gradient(circle at center 40%, #2a1b1b 0%, #000 80%); /* 暗红金色背景晕染 */
         }
 
-        .foreground-coins { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 999; perspective: 1000px; }
-        .coin { position: absolute; top: -60px; width: 36px; height: 36px; transform-style: preserve-3d; animation: fall-slow linear forwards; }
-        .coin-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; animation: rotate-flat 4s linear infinite; }
-        .face { position: absolute; width: 100%; height: 100%; border-radius: 50%; background: radial-gradient(circle at 35% 35%, var(--gold-bright) 0%, var(--gold) 50%, var(--gold-dark) 100%); border: 1px solid rgba(255, 255, 255, 0.4); display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 6px rgba(0,0,0,0.4); backface-visibility: hidden; }
-        .face::after { content: "MMK"; font-size: 11px; font-weight: 900; color: #5c441a; }
-        .side { position: absolute; width: 100%; height: 100%; border-radius: 50%; background: repeating-conic-gradient(from 0deg, var(--gold-dark) 0deg 3deg, var(--gold-bright) 3deg 6deg); transform: translateZ(-1px); }
-        .front { transform: translateZ(1px); } .back { transform: translateZ(-1px) rotateY(180deg); }
-
-        @keyframes rotate-flat { 0% { transform: rotateZ(0deg); } 100% { transform: rotateZ(360deg); } }
-        @keyframes fall-slow { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 100% { transform: translateY(115vh); opacity: 1; } }
-
-        .card { position: relative; background: rgba(18, 18, 18, 0.98); width: 92%; max-width: 380px; padding: 4px; border-radius: 35px; text-align: center; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.3); z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .card::before { content: ""; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, var(--gold)); animation: rotate-border 4s linear infinite; z-index: -1; }
-        @keyframes rotate-border { 100% { transform: rotate(360deg); } }
-        .card-inner { background: #121212; border-radius: 32px; padding: 20px 12px; }
-
-        /* 跑马灯样式 - 增加边距优化位置布局[cite: 1] */
-        .top-ticker { background: rgba(212, 175, 55, 0.08); border: 1px solid rgba(212, 175, 55, 0.25); border-radius: 50px; margin-top: 5px; margin-bottom: 18px; padding: 5px 0; overflow: hidden; position: relative; display: flex; }
-        .ticker-move { display: inline-block; white-space: nowrap; animation: tickerInfinite 65s linear infinite; color: var(--gold-light); font-size: 11px; font-weight: bold; will-change: transform; }
-        @keyframes tickerInfinite { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-
-        .logo-area { position: relative; width: 100px; height: 100px; margin: 0 auto 10px; animation: breathe 3s ease-in-out infinite; }
-        @keyframes breathe { 0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); } 50% { transform: scale(1.04); filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.7)); } }
-        .logo { width: 100%; height: 100%; border-radius: 20px; overflow: hidden; border: 2px solid var(--gold); background: #1a1a1a; }
-        .logo img { width: 100%; height: 100%; object-fit: cover; }
-        
-        h1 { font-size: 20px; color: var(--gold); margin: 5px 0; font-weight: 800; }
-        .status { font-size: 11px; color: #44eb87; display: flex; align-items: center; justify-content: center; gap: 5px; margin-bottom: 15px; }
-        .dot { width: 7px; height: 7px; background: #00c853; border-radius: 50%; box-shadow: 0 0 8px #00c853; animation: blink-dot 1.2s infinite ease-in-out; }
-        @keyframes blink-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-
-        .game-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; }
-        .game-box { width: 75px; height: 75px; background: #000; border-radius: 15px; border: 1px solid rgba(212, 175, 55, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-        .game-box img { width: 100%; height: 100%; }
-
-        .pay-row { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; }
-        .pay-box { flex: 1; display: flex; flex-direction: column; align-items: center; background: rgba(255,255,255,0.03); padding: 8px 2px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.08); font-size: 12px; }
-        .pay-icon-wrapper { width: 45px; height: 45px; border-radius: 10px; overflow: hidden; margin-bottom: 4px; background: #fff; }
-        .pay-icon-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-
-        /* 金黄大幅度呼吸效果[cite: 1] */
-        .urgency-alert {
-            background: linear-gradient(135deg, #b31217 0%, #e52d27 100%);
-            border: 1px solid var(--gold);
-            color: var(--gold-bright);
-            font-size: 15px;
-            font-weight: 900;
-            padding: 10px 5px;
-            border-radius: 12px;
-            margin-bottom: 15px;
+        .wrapper {
+            width: 100%;
+            max-width: 420px;
+            height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            position: relative;
+            padding-top: 20px;
+        }
+
+        /* 顶部 LOGO */
+        .logo-container { text-align: center; margin-bottom: 10px; animation: fadeIn 1s ease-in; }
+        .main-logo { height: 100px; object-fit: contain; filter: drop-shadow(0 0 15px rgba(251, 192, 45, 0.4)); }
+
+        /* 标题区 */
+        .header-text { text-align: center; padding: 0 20px; margin-bottom: 20px; }
+        .header-text h1 { font-size: 24px; color: var(--gold); margin-bottom: 8px; text-shadow: 0 2px 5px rgba(0,0,0,0.8); }
+        .header-text p { font-size: 15px; color: #ddd; background: rgba(229, 57, 53, 0.2); border: 1px solid rgba(229, 57, 53, 0.5); display: inline-block; padding: 6px 15px; border-radius: 20px; font-weight: bold; }
+
+        /* 盲盒游戏区 (核心) */
+        .game-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            box-shadow: 0 4px 15px rgba(229, 45, 39, 0.4);
-            text-shadow: 0 0 8px rgba(255, 249, 230, 0.6);
-            animation: big-breathe 2s infinite ease-in-out;
+            align-items: center;
+            position: relative;
         }
-        @keyframes big-breathe {
-            0%, 100% { transform: scale(0.95); filter: brightness(1); }
-            50% { transform: scale(1.08); filter: brightness(1.3); }
+        .boxes-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            padding: 0 20px;
         }
+        .box {
+            width: 30%;
+            max-width: 100px;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #e53935, #b71c1c);
+            border: 2px solid #ff5252;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6), inset 0 0 15px rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 45px;
+            cursor: pointer;
+            position: relative;
+            animation: bounce 2s infinite;
+            transition: transform 0.2s;
+        }
+        .box:nth-child(2) { animation-delay: 0.2s; }
+        .box:nth-child(3) { animation-delay: 0.4s; }
+        .box:hover { filter: brightness(1.2); }
+        .box::after { content: "?"; color: rgba(255,255,255,0.9); font-weight: 900; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
 
-        .btn-group { display: flex; flex-direction: row; gap: 8px; justify-content: center; }
-        .btn { 
-            flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-decoration: none; padding: 10px 5px; border-radius: 18px; 
-            color: white; transition: 0.2s; border: 1.5px solid rgba(255,255,255,0.3);
-        }
-        .btn img { width: 40px; height: 40px; margin-bottom: 5px; object-fit: contain; }
-        .btn-main { font-weight: bold; font-size: 13px; text-align: center; line-height: 1.2; }
-        .btn-tg { background: linear-gradient(180deg, #24A1DE, #1c82b6); }
-        .btn-viber { background: linear-gradient(180deg, #7360f2, #5d4ed1); }
-        .btn:active { transform: scale(0.95); }
+        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .shake-anim { animation: shake 0.5s !important; }
+        @keyframes shake { 0% { transform: translateX(0); } 20% { transform: translateX(-10px) rotate(-10deg); } 40% { transform: translateX(10px) rotate(10deg); } 60% { transform: translateX(-10px) rotate(-10deg); } 80% { transform: translateX(10px) rotate(10deg); } 100% { transform: translateX(0); } }
 
-        .notice { margin-top: 15px; font-size: 10px; color: #777; line-height: 1.4; }
-        .brand-bold { color: var(--gold-light); font-weight: bold; }
+        /* 隐藏的领奖区 (游戏结束后显示) */
+        .result-area {
+            display: none; /* 初始隐藏 */
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            animation: popIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popIn { 0% { opacity: 0; transform: scale(0.5); } 100% { opacity: 1; transform: scale(1); } }
+        
+        .win-title { font-size: 26px; color: #fff; text-align: center; margin-bottom: 15px; line-height: 1.3;}
+        .win-title span { color: var(--gold); font-size: 34px; font-weight: 900; display: block; text-shadow: 0 0 20px rgba(251, 192, 45, 0.8); }
+
+        /* 沿用 V2 的按钮和图标样式 */
+        .action-area { padding: 0 20px 20px; width: 100%; }
+        .btn-group { display: flex; gap: 15px; justify-content: center; }
+        .btn { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; padding: 12px 5px; border-radius: 16px; color: white; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 8px 20px rgba(0,0,0,0.5); position: relative; overflow: hidden;}
+        .btn-tg { background: linear-gradient(135deg, #1c82b6, #24A1DE); }
+        .btn-viber { background: linear-gradient(135deg, #5d4ed1, #7360f2); }
+        .btn img { width: 52px; height: 52px; margin-bottom: 6px; object-fit: contain; z-index: 2;}
+        .tg-fix { transform: scale(1.15); } 
+        .viber-fix { transform: scale(1.25); }
+        .btn span.main { font-weight: 800; font-size: 15px; z-index: 2; text-shadow: 0 2px 4px rgba(0,0,0,0.3);}
+        .btn span.sub { font-size: 11px; opacity: 0.85; margin-top: 3px; z-index: 2;}
+        .btn::after { content: ""; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transform: skewX(-20deg); animation: shine 3s infinite; z-index: 1;}
+
+        /* 沿用 V2 的底部信任图标 */
+        .trust-section { width: 100%; margin-bottom: 10px; margin-top: auto;}
+        .trust-divider { display: flex; align-items: center; text-align: center; color: #666; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; }
+        .trust-divider::before, .trust-divider::after { content: ''; flex: 1; border-bottom: 1px solid rgba(255,255,255,0.1); margin: 0 15px; }
+        .trust-icons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px 20px; padding: 0 20px; justify-items: center; align-items: center; }
+        .trust-icons-grid img { height: 60px; max-width: 150px; object-fit: contain; border-radius: 16px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)) grayscale(10%); }
+        .kpay-fix { clip-path: inset(3px round 16px); }
+
+        .footer { text-align: center; font-size: 11px; color: #555; padding-bottom: 15px; }
+        
+        @keyframes fadeIn { 0% { opacity: 0; transform: scale(0.9); } 100% { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
-    <div class="foreground-coins" id="coin-canvas"></div>
-    <div class="card">
-        <div class="card-inner">
-            <!-- 头部 Logo 与标题 -->
-            <div class="logo-area">
-                <div class="logo"><img src="logo.webp" alt="Logo"></div>
+
+    <div class="wrapper">
+        
+        <!-- LOGO -->
+        <div class="logo-container">
+            <img src="logo.webp" alt="VIP Logo" class="main-logo">
+        </div>
+
+        <!-- 游戏阶段：标题与盲盒 -->
+        <div class="game-area" id="gameArea">
+            <div class="header-text">
+                <h1>ရွှေဘောက်စ်ကို ရွေးချယ်ပါ!</h1> <!-- 选择一个盲盒！ -->
+                <p>အခမဲ့ဖွင့်ခွင့် (၁) ကြိမ် ရှိပါသည်</p> <!-- 你有 1 次免费开启机会 -->
             </div>
-            <h1>Gold 8 VIP Service</h1>
-            <div class="status"><span class="dot"></span><span>Online - အခုဆက်သွယ်နိုင်ပါသည်</span></div>
             
-            <!-- 游戏图标 -->
-            <div class="game-row">
-                <div class="game-box"><img src="club388.webp" alt="C388"></div>
-                <div class="game-box"><img src="batman688.webp" alt="B688"></div>
-            </div>
-
-            <!-- 支付方式图标 -->
-            <div class="pay-row">
-                <div class="pay-box"><div class="pay-icon-wrapper"><img src="Kpay.webp" alt="KPay"></div><strong>KBZPay</strong></div>
-                <div class="pay-box"><div class="pay-icon-wrapper"><img src="WavePay.webp" alt="WPay"></div><strong>WavePay</strong></div>
-            </div>
-
-            <!-- 移动至此：中奖信息跑马灯[cite: 1] -->
-            <div class="top-ticker">
-                <div class="ticker-move" id="winners-list"></div>
-            </div>
-
-            <!-- 呼吸优惠提示 -->
-            <div class="urgency-alert">🔥 NEW MEMBERS BONUS -100% 🔥</div>
-
-            <!-- 并列按钮组 -->
-            <div class="btn-group">
-                <a href="https://6tjzk.bemobtrcks.com/click/1" class="btn btn-tg">
-                    <img src="telegram.webp" alt="TG">
-                    <span class="btn-main">Telegram<br>ဆက်သွယ်ရန်</span>
-                </a>
-                <a href="https://6tjzk.bemobtrcks.com/click/2" class="btn btn-viber">
-                    <img src="viber.webp" alt="Viber">
-                    <span class="btn-main">Viber<br>ဆက်သွယ်ရန်</span>
-                </a>
-            </div>
-
-            <div class="notice">
-                <span class="brand-bold">Club388®</span> & <span class="brand-bold">Batman688®</span> Partner<br>Safe & Fast Service in Myanmar
+            <div class="boxes-container">
+                <div class="box" onclick="openBox(this)"></div>
+                <div class="box" onclick="openBox(this)"></div>
+                <div class="box" onclick="openBox(this)"></div>
             </div>
         </div>
+
+        <!-- 结果阶段：领奖区 (初始隐藏) -->
+        <div class="result-area" id="resultArea">
+            <div class="win-title">
+                ဂုဏ်ယူပါတယ်! သင်ရရှိသည်မှာ<br> <!-- 恭喜！你获得了 -->
+                <span>100% NEW BONUS</span>
+            </div>
+            
+            <div class="action-area">
+                <div class="btn-group">
+                    <!-- 直接调用 BeMob 的点击链接 -->
+                    <a href="https://6tjzk.bemobtrcks.com/click/1" class="btn btn-tg">
+                        <img src="telegram.webp" alt="Telegram" class="tg-fix">
+                        <span class="main">Telegram ဖြင့်<br>ရယူမည်</span>
+                        <span class="sub">24/7 Service</span>
+                    </a>
+                    <a href="https://6tjzk.bemobtrcks.com/click/2" class="btn btn-viber">
+                        <img src="viber.webp" alt="Viber" class="viber-fix">
+                        <span class="main">Viber ဖြင့်<br>ရယူမည်</span>
+                        <span class="sub">Fast Reply</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 官方合作展示区 (放在底部固定) -->
+        <div class="trust-section">
+            <div class="trust-divider">Official Partners</div>
+            <div class="trust-icons-grid">
+                <img src="club388.webp" alt="Club388">
+                <img src="batman688.webp" alt="Batman688">
+                <img src="Kpay.webp" alt="KPay" class="kpay-fix">
+                <img src="WavePay.webp" alt="WavePay">
+            </div>
+        </div>
+
+        <div class="footer">
+            Official Agent for Myanmar • 100% Secure & Trusted
+        </div>
     </div>
+
+    <!-- 游戏逻辑脚本 -->
     <script>
-        const mimes = ['097', '099', '094', '092', '098', '096'];
-        const timeTexts = ['ယခုလေးတင်', '1 မိနစ်ခန့်က', '3 မိနစ်ခန့်က'];
-        function initTicker() {
-            let baseText = "";
-            for(let i=0; i<15; i++) {
-                let phone = mimes[Math.floor(Math.random()*mimes.length)] + "****" + Math.floor(Math.random()*999);
-                let amount = (Math.floor(Math.random() * 50) + 5) * 10000;
-                baseText += `<span> 💰 [${timeTexts[Math.floor(Math.random()*timeTexts.length)]}] [${phone}] သည် ${amount.toLocaleString()} MMK အနိုင်ရရှိသွားပါသည်။ &nbsp;&nbsp;&nbsp;&nbsp;</span>`;
-            }
-            document.getElementById('winners-list').innerHTML = baseText + baseText;
+        let hasPlayed = false;
+
+        function openBox(element) {
+            // 防止重复点击
+            if (hasPlayed) return;
+            hasPlayed = true;
+
+            // 1. 添加震动动画
+            element.classList.add('shake-anim');
+            
+            // 其他盲盒变暗
+            let allBoxes = document.querySelectorAll('.box');
+            allBoxes.forEach(b => {
+                if(b !== element) b.style.opacity = '0.3';
+            });
+
+            // 2. 震动 0.6 秒后，隐藏游戏区，显示领奖区
+            setTimeout(() => {
+                document.getElementById('gameArea').style.display = 'none';
+                let resultArea = document.getElementById('resultArea');
+                resultArea.style.display = 'flex';
+            }, 600);
         }
-        initTicker();
-        function createCoins() {
-            const container = document.getElementById('coin-canvas');
-            for (let i = 0; i < 6; i++) { spawnCoin(container, Math.random() * 5); }
-        }
-        function spawnCoin(container, delay = 0) {
-            const coin = document.createElement('div');
-            coin.className = 'coin';
-            coin.style.left = Math.random() * 100 + '%';
-            coin.style.animationDelay = delay + 's';
-            coin.style.animationDuration = (5 + Math.random() * 5) + 's';
-            coin.innerHTML = `<div class="coin-inner"><div class="face front"></div><div class="face back"></div><div class="side"></div></div>`;
-            container.appendChild(coin);
-            coin.addEventListener('animationend', () => { coin.remove(); spawnCoin(container, 0); });
-        }
-        createCoins();
     </script>
 </body>
 </html>
